@@ -4,7 +4,7 @@ import img from '@/assets/img8.png'
 
 const Banner = () => {
   return (
-    <section id="home" className="min-h-[100vh] flex items-center px-6 md:px-16 py-10 md:py-20 bg-[#0d0d0d] overflow-hidden">
+    <section id="home" className="min-h-[100vh] flex items-center px-6 md:px-16 py-5 md:py-20 bg-[#0d0d0d] overflow-hidden">
 
       <div className="w-full max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-between gap-9  ">
 
@@ -65,7 +65,7 @@ const Banner = () => {
 
           <div className="absolute inset-0 border border-[#e63946]/10 rounded-[18px] pointer-events-none" />
 
-          <div className="relative w-[220px] h-[280px] sm:w-[260px] sm:h-[320px] md:w-[300px] md:h-[380px] rounded-xl border border-[#e63946]/25 overflow-hidden">
+          <div className="relative w-[260px] h-[320px] md:w-[300px] md:h-[380px] rounded-xl border border-[#e63946]/25 overflow-hidden">
             <Image
               src={img}
               alt="Fatema Tuj Zohura"

@@ -11,7 +11,7 @@ const checklist = [
 
 const AboutMe = () => {
   return (
-    <section id="about" className="pb-20 md:pb-30 md:pt-10 bg-[#0d0d0d]">
+    <section id="about" className="pb-20 md:pb-30 pt-5  md:pt-10 bg-[#0d0d0d]">
       <div className="w-full max-w-6xl mx-auto px-6 md:px-16">
 
         <div className="text-center mb-12">
@@ -25,7 +25,7 @@ const AboutMe = () => {
 
           <div className="flex-shrink-0 relative">
             <div className="absolute -top-3 -left-3 w-full h-full rounded-2xl border border-[#e63946]/20 pointer-events-none" />
-            <div className="relative w-[260px] h-[320px] md:w-[300px] md:h-[380px] rounded-2xl border border-[#e63946]/25 overflow-hidden">
+            <div className="relative w-[220px] h-[280px] sm:w-[260px] sm:h-[320px] md:w-[300px] md:h-[380px]  rounded-2xl border border-[#e63946]/25 overflow-hidden">
               <Image
                 src={img}
                 alt="Fatema Tuj Zohura"
