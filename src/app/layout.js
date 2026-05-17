@@ -7,6 +7,8 @@ import AboutMe from "@/components/AboutMe";
 import Projects from "@/components/Projects";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
+import Education from "@/components/Education";
+import CursorTrail from "@/components/CursorTrail";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -36,10 +38,12 @@ export default function RootLayout({ children }) {
       className={`${geistSans.variable} ${geistMono.variable} ${poppins.variable} h-full antialiased dark`}
     >
       <body className="min-h-full flex flex-col bg-[#0A0F1E]">
+        <CursorTrail /> 
         <Navbar />
         <Banner />
         <AboutMe/>
         <TechStack/>
+        <Education/>
         <Projects/>
         <Contact/>
         {children}

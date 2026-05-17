@@ -23,7 +23,7 @@ const AboutMe = () => {
         <div className="flex flex-col md:flex-row items-center gap-16">
           <div className="flex-shrink-0 relative">
             <div className="absolute -top-3 -left-3 w-full h-full rounded-2xl border border-[#e63946]/20 pointer-events-none" />
-            <div className="relative w-[220px] h-[280px] sm:w-[260px] sm:h-[320px] md:w-[300px] md:h-[380px]  rounded-2xl border border-[#e63946]/25 overflow-hidden">
+            <div className="relative w-[220px] h-[280px] sm:w-[260px] sm:h-[320px] md:w-[300px] md:h-[380px] rounded-2xl border border-[#e63946]/25 overflow-hidden">
               <Image
                 src={img}
                 alt="Fatema Tuj Zohura"
@@ -39,11 +39,22 @@ const AboutMe = () => {
               WHO I AM
             </div>
 
+            <p className="text-[16px] text-[#707070] leading-relaxed mb-4 max-w-lg">
+              I&apos;m Fatema Tuj Zohura, a passionate MERN Stack Developer.
+              My programming journey began in 2025, inspired by my brother who sparked my curiosity
+              for the world of technology and coding.
+            </p>
+
+            <p className="text-[16px] text-[#707070] leading-relaxed mb-4 max-w-lg">
+              I love building full-stack applications — from crafting clean, intuitive user interfaces
+              to architecting robust backends. There&apos;s something deeply satisfying about bringing
+              an idea to life end-to-end and seeing it work seamlessly for real users.
+            </p>
+
             <p className="text-[16px] text-[#707070] leading-relaxed mb-8 max-w-lg">
-              I&apos;m Fatema Tuj Zohura, a passionate MERN Stack Developer who
-              loves building modern, scalable web applications. I enjoy turning
-              complex problems into simple, beautiful, and intuitive digital
-              experiences.
+              Outside of programming, I&apos;m a travel enthusiast. Exploring new places, experiencing
+              different cultures, and meeting new people keeps me creative and gives me a fresh
+              perspective that I bring back to my work.
             </p>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-10">
@@ -58,7 +69,7 @@ const AboutMe = () => {
               ))}
             </div>
 
-            <a
+            {/* <a
               href="/Fatema_Tuj_Zohura_CV.pdf"
               target="_blank"
               rel="noopener noreferrer"
@@ -67,8 +78,7 @@ const AboutMe = () => {
             >
               <Download size={16} />
               Download CV
-            </a>
-
+            </a> */}
           </div>
         </div>
       </div>
