@@ -13,7 +13,7 @@ const education = [
 
 const Education = () => {
   return (
-    <section id="education" className="pt-10  bg-[#0d0d0d]">
+    <section id="education" className="py-10  bg-[#0d0d0d]">
       <div className="w-full max-w-6xl mx-auto px-6 md:px-16">
         <div className="text-center mb-12">
           <h2 className="text-4xl font-bold text-[#f1f1f1] mb-3">
