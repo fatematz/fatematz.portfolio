@@ -1,14 +1,14 @@
 import { Geist, Geist_Mono, Poppins } from "next/font/google";
 import "./globals.css";
-import Navbar from "@/components/Navbar";
-import Banner from "@/components/Banner";
-import TechStack from "@/components/Skills";
-import AboutMe from "@/components/AboutMe";
-import Projects from "@/components/Projects";
-import Contact from "@/components/Contact";
-import Footer from "@/components/Footer";
-import Education from "@/components/Education";
-import CursorTrail from "@/components/CursorTrail";
+// import Navbar from "@/components/Navbar";
+// import Banner from "@/components/Banner";
+// import TechStack from "@/components/Skills";
+// import AboutMe from "@/components/AboutMe";
+// import Projects from "@/components/Projects";
+// import Contact from "@/components/Contact";
+// import Footer from "@/components/Footer";
+// import Education from "@/components/Education";
+// import CursorTrail from "@/components/CursorTrail";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -38,16 +38,16 @@ export default function RootLayout({ children }) {
       className={`${geistSans.variable} ${geistMono.variable} ${poppins.variable} h-full antialiased dark`}
     >
       <body className="min-h-full flex flex-col bg-[#0A0F1E]">
-        <CursorTrail /> 
+        {/* <CursorTrail /> 
         <Navbar />
         <Banner />
         <AboutMe/>
         <TechStack/>
         <Education/>
         <Projects/>
-        <Contact/>
+        <Contact/> */}
         {children}
-        <Footer/>
+        {/* <Footer/> */}
       </body>
     </html>
   );
