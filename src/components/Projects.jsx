@@ -1,8 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useRouter } from "next/navigation";
 import Image from "next/image";
-import { ExternalLink, X, ChevronDown, ChevronUp } from "lucide-react";
 import skillsphere from "@/assets/skillsphere.png";
 import keenkeeper from "@/assets/keenkeeper.png";
 import digitools from "@/assets/digitools.png";
@@ -14,7 +13,7 @@ const GithubIcon = () => (
   </svg>
 );
 
-const projects = [
+export const projects = [
   {
     id: "skillsphere",
     title: "SkillSphere",
@@ -51,7 +50,7 @@ const projects = [
     description:
       "A tab-based digital marketplace web app where users can browse premium digital tools, add to cart, and manage purchases with a dynamic real-time interface.",
     image: digitools,
-    live: "https://lnkd.in/gHrDTRhA",
+    live: "https://a-6-digitools-platform.netlify.app",
     github: "https://github.com/fatematz/DigiTools-Platform",
     tags: ["React", "Vite", "Tailwind CSS", "DaisyUI"],
     featured: false,
@@ -77,235 +76,84 @@ const projects = [
   },
 ];
 
-const ProjectModal = ({ project, onClose }) => {
-  const [showChallenges, setShowChallenges] = useState(false);
-  const [showFuture, setShowFuture] = useState(false);
-
-  if (!project) return null;
-
-  return (
-    <div
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/75 backdrop-blur-sm"
-      onClick={onClose}
-    >
-      <div
-        className="relative w-full max-w-lg bg-[#111111] border border-[#e63946]/30 rounded-2xl overflow-hidden shadow-2xl max-h-[90vh] flex flex-col"
-        onClick={(e) => e.stopPropagation()}
-      >
-        {/* Modal Image */}
-        <div className="relative w-full h-[200px] shrink-0 overflow-hidden">
-          <Image
-            src={project.image}
-            alt={project.title}
-            fill
-            className="object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#111111]/60 to-transparent" />
-          {project.featured && (
-            <span className="absolute top-3 right-3 text-[11px] font-mono text-[#e63946] bg-[#0d0d0d]/80 border border-[#e63946]/30 px-2 py-0.5 rounded-full backdrop-blur-sm">
-              Featured
-            </span>
-          )}
-          <button
-            onClick={onClose}
-            className="absolute top-3 left-3 p-1.5 rounded-full bg-[#0d0d0d]/80 border border-white/10 text-[#a0a0a0] hover:text-white hover:border-white/30 transition-all duration-200 backdrop-blur-sm"
-          >
-            <X size={16} />
-          </button>
-        </div>
-
-        {/* Scrollable Content */}
-        <div className="overflow-y-auto flex-1 p-6 flex flex-col gap-5">
-
-          {/* Title */}
-          <h3 className="text-[22px] font-bold text-[#f1f1f1]">
-            {project.title}
-          </h3>
-
-          {/* Description */}
-          <div>
-            <p className="text-[11px] font-mono text-[#e63946] uppercase tracking-widest mb-2">
-              Description
-            </p>
-            <p className="text-[14px] text-[#a0a0a0] leading-relaxed">
-              {project.description}
-            </p>
-          </div>
-
-          {/* Tech Stack */}
-          <div>
-            <p className="text-[11px] font-mono text-[#e63946] uppercase tracking-widest mb-2">
-              Tech Stack
-            </p>
-            <div className="flex flex-wrap gap-2">
-              {project.tags.map((tag) => (
-                <span
-                  key={tag}
-                  className="text-[12px] font-mono text-[#a0a0a0] bg-white/[0.04] border border-white/[0.08] px-3 py-1 rounded-full"
-                >
-                  {tag}
-                </span>
-              ))}
-            </div>
-          </div>
-
-          {/* Challenges — collapsible */}
-          <div className="border border-white/[0.06] rounded-xl overflow-hidden">
-            <button
-              onClick={() => setShowChallenges((v) => !v)}
-              className="w-full flex items-center justify-between px-4 py-3 text-left hover:bg-white/[0.03] transition-colors duration-200"
-            >
-              <span className="text-[11px] font-mono text-[#e63946] uppercase tracking-widest">
-                Challenges Faced
-              </span>
-              {showChallenges ? (
-                <ChevronUp size={14} className="text-[#707070]" />
-              ) : (
-                <ChevronDown size={14} className="text-[#707070]" />
-              )}
-            </button>
-            {showChallenges && (
-              <p className="text-[13px] text-[#707070] leading-relaxed px-4 pb-4">
-                {project.challenges}
-              </p>
-            )}
-          </div>
-
-          {/* Future Plans — collapsible */}
-          <div className="border border-white/[0.06] rounded-xl overflow-hidden">
-            <button
-              onClick={() => setShowFuture((v) => !v)}
-              className="w-full flex items-center justify-between px-4 py-3 text-left hover:bg-white/[0.03] transition-colors duration-200"
-            >
-              <span className="text-[11px] font-mono text-[#e63946] uppercase tracking-widest">
-                Future Plans
-              </span>
-              {showFuture ? (
-                <ChevronUp size={14} className="text-[#707070]" />
-              ) : (
-                <ChevronDown size={14} className="text-[#707070]" />
-              )}
-            </button>
-            {showFuture && (
-              <p className="text-[13px] text-[#707070] leading-relaxed px-4 pb-4">
-                {project.futurePlans}
-              </p>
-            )}
-          </div>
-
-          {/* Links */}
-          <div className="flex items-center gap-3 pt-2 border-t border-white/[0.06]">
-            <a
-              href={project.live}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex-1 flex items-center justify-center gap-2 text-[13px] font-semibold text-white bg-[#e63946] hover:bg-[#c1121f] px-4 py-2 rounded-full transition-all duration-200"
-            >
-              <ExternalLink size={14} />
-              Live Demo
-            </a>
-            <a
-              href={project.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex-1 flex items-center justify-center gap-2 text-[13px] font-medium text-[#a0a0a0] hover:text-white border border-white/[0.08] hover:border-white/20 px-4 py-2 rounded-full transition-all duration-200"
-            >
-              <GithubIcon />
-              GitHub
-            </a>
-          </div>
-
-        </div>
-      </div>
-    </div>
-  );
-};
-
 const Projects = () => {
-  const [selectedProject, setSelectedProject] = useState(null);
+  const router = useRouter();
 
   return (
-    <>
-      <section id="projects" className="py-10 md:py-24 bg-[#0d0d0d]">
-        <div className="w-full max-w-6xl mx-auto px-6 md:px-16">
+    <section id="projects" className="py-10 md:py-10 bg-[#0d0d0d]">
+      <div className="w-full max-w-6xl mx-auto px-6 md:px-16">
 
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-[#f1f1f1] mb-3">
-              My <span className="text-[#e63946]">Projects</span>
-            </h2>
-            <div className="w-16 h-[2px] bg-[#e63946] mx-auto" />
-          </div>
+        <div className="text-center mb-16">
+          <h2 className="text-4xl font-bold text-[#f1f1f1] mb-3">
+            My <span className="text-[#e63946]">Projects</span>
+          </h2>
+          <div className="w-16 h-[2px] bg-[#e63946] mx-auto" />
+        </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {projects.map((project) => (
-              <div
-                key={project.id}
-                className={`relative flex flex-col rounded-2xl border overflow-hidden transition-all duration-300 group
-                  ${
-                    project.featured
-                      ? "border-[#e63946]/25 bg-[#111111] hover:border-[#e63946]/50"
-                      : "border-white/[0.06] bg-[#111111] hover:border-[#e63946]/30"
-                  }`}
-              >
-                {/* Project Image */}
-                <div className="relative w-full h-[200px] overflow-hidden">
-                  <Image
-                    src={project.image}
-                    alt={project.title}
-                    fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
-                  {project.featured && (
-                    <span className="absolute top-3 right-3 text-[11px] font-mono text-[#e63946] bg-[#0d0d0d]/80 border border-[#e63946]/30 px-2 py-0.5 rounded-full backdrop-blur-sm">
-                      Featured
-                    </span>
-                  )}
-                </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {projects.map((project) => (
+            <div
+              key={project.id}
+              className={`relative flex flex-col rounded-2xl border overflow-hidden transition-all duration-300 group
+                ${
+                  project.featured
+                    ? "border-[#e63946]/25 bg-[#111111] hover:border-[#e63946]/50"
+                    : "border-white/[0.06] bg-[#111111] hover:border-[#e63946]/30"
+                }`}
+            >
+              {/* Project Image */}
+              <div className="relative w-full h-[200px] overflow-hidden">
+                <Image
+                  src={project.image}
+                  alt={project.title}
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+                {project.featured && (
+                  <span className="absolute top-3 right-3 text-[11px] font-mono text-[#e63946] bg-[#0d0d0d]/80 border border-[#e63946]/30 px-2 py-0.5 rounded-full backdrop-blur-sm">
+                    Featured
+                  </span>
+                )}
+              </div>
 
-                {/* Card Content */}
-                <div className="flex flex-col gap-4 p-6 flex-1">
-                  <h3 className="text-[20px] font-bold text-[#f1f1f1] group-hover:text-[#e63946] transition-colors">
-                    {project.title}
-                  </h3>
+              {/* Card Content */}
+              <div className="flex flex-col gap-4 p-6 flex-1">
+                <h3 className="text-[20px] font-bold text-[#f1f1f1] group-hover:text-[#e63946] transition-colors">
+                  {project.title}
+                </h3>
 
-                  <p className="text-[15px] text-[#707070] leading-relaxed flex-1">
-                    {project.description}
-                  </p>
+                <p className="text-[15px] text-[#707070] leading-relaxed flex-1">
+                  {project.description}
+                </p>
 
-                  <div className="pt-2 border-t border-white/[0.06]">
-                    <button
-                      onClick={() => setSelectedProject(project)}
-                      className="w-full text-center text-[13px] font-semibold text-white bg-[#e63946] hover:bg-[#c1121f] px-4 py-2 rounded-full transition-all duration-200"
-                    >
-                      View Details
-                    </button>
-                  </div>
+                <div className="pt-2 border-t border-white/[0.06]">
+                  {/* ✅ Modal নেই — সরাসরি নতুন page-এ যাবে */}
+                  <button
+                    onClick={() => router.push(`/projects/${project.id}`)}
+                    className="w-full text-center text-[13px] font-semibold text-white bg-[#e63946] hover:bg-[#c1121f] px-4 py-2 rounded-full transition-all duration-200"
+                  >
+                    View Details
+                  </button>
                 </div>
               </div>
-            ))}
-          </div>
-
-          <div className="text-center mt-12">
-            <a
-              href="https://github.com/fatematz"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 text-[14px] font-semibold text-[#e63946] border border-[#e63946]/40 hover:bg-[#e63946]/10 px-7 py-3 rounded-full transition-all duration-200"
-            >
-              <GithubIcon />
-              View All on GitHub
-            </a>
-          </div>
-
+            </div>
+          ))}
         </div>
-      </section>
 
-      {/* Modal */}
-      <ProjectModal
-        project={selectedProject}
-        onClose={() => setSelectedProject(null)}
-      />
-    </>
+        <div className="text-center mt-12">
+          <a
+            href="https://github.com/fatematz"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 text-[14px] font-semibold text-[#e63946] border border-[#e63946]/40 hover:bg-[#e63946]/10 px-7 py-3 rounded-full transition-all duration-200"
+          >
+            <GithubIcon />
+            View All on GitHub
+          </a>
+        </div>
+
+      </div>
+    </section>
   );
 };
 
