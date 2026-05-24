@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import img from "@/assets/img8.png";
+import { Download } from "lucide-react";
 
 const TYPING_TEXTS = [
   "MERN Stack Developer",
@@ -99,11 +100,12 @@ const Banner = () => {
 
           <div className="flex items-center justify-center md:justify-start gap-4 flex-wrap">
             <a
-              href="/Fatema_Tuj_Zohura_CV.pdf"
+              href="/Fatema_Tuj_Zohura_Resume.pdf"
               download
-              className="text-[13px] font-semibold text-white bg-[#e63946] hover:bg-[#c1121f] px-7 py-3 rounded-full transition-all duration-200"
+              className="text-[13px] flex items-center gap-2 font-semibold text-white bg-[#e63946] hover:bg-[#c1121f] px-7 py-3 rounded-full transition-all duration-200"
             >
-              Download CV
+               <Download size={16} />
+              Resume
             </a>
          <button
   onClick={() => document.getElementById("contact").scrollIntoView({ behavior: "smooth" })}

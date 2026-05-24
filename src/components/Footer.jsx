@@ -61,14 +61,14 @@ const Footer = () => {
           {/* Right — CV + Socials */}
           <div className="flex items-center gap-3">
             <a
-              href="/Fatema_Tuj_Zohura_CV.pdf"
+              href="/Fatema_Tuj_Zohura_Resume.pdf"
               target="_blank"
               rel="noopener noreferrer"
               download
               className="inline-flex items-center gap-2 text-[14px] font-semibold text-white bg-[#e63946] hover:bg-[#c1121f] px-7 py-3 rounded-full transition-all duration-200 hover:-translate-y-px"
             >
               <Download size={16} />
-              Download CV
+              Resume
             </a>
 
             <Link
