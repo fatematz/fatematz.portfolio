@@ -2,6 +2,8 @@
 
 import Link from "next/link";
 import { Mail, MapPin, Send } from "lucide-react";
+import { useRef, useState } from "react";
+import emailjs from "@emailjs/browser";
 
 const LinkedInIcon = () => (
   <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24">
@@ -44,6 +46,28 @@ const socialLinks = [
 ];
 
 const Contact = () => {
+  const formRef = useRef();
+  const [status, setStatus] = useState(""); // "", "sending", "success", "error"
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setStatus("sending");
+
+    try {
+      await emailjs.sendForm(
+        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID,   // ← তোমার Service ID দাও
+        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID,  // ← তোমার Template ID দাও
+        formRef.current,
+        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY    // ← তোমার Public Key দাও
+      );
+      setStatus("success");
+      formRef.current.reset();
+    } catch (err) {
+      console.error(err);
+      setStatus("error");
+    }
+  };
+
   return (
     <section id="contact" className="pt-10 pb-20 bg-[#0d0d0d]">
       <div className="w-full max-w-6xl mx-auto px-6 md:px-16">
@@ -116,36 +140,56 @@ const Contact = () => {
 
           {/* Right — Form */}
           <div className="flex-1">
-            <form className="flex flex-col gap-4">
+            <form ref={formRef} onSubmit={handleSubmit} className="flex flex-col gap-4">
               <div className="flex flex-col sm:flex-row gap-4">
                 <input
                   type="text"
+                  name="name"
                   placeholder="Your Name"
+                  required
                   className="flex-1 bg-[#111111] border border-white/[0.06] rounded-xl px-4 py-3 text-[16px] text-[#f1f1f1] placeholder-[#555] focus:outline-none focus:border-[#e63946]/50 transition-colors"
                 />
                 <input
                   type="email"
+                  name="email"
                   placeholder="Your Email"
+                  required
                   className="flex-1 bg-[#111111] border border-white/[0.06] rounded-xl px-4 py-3 text-[16px] text-[#f1f1f1] placeholder-[#555] focus:outline-none focus:border-[#e63946]/50 transition-colors"
                 />
               </div>
               <input
                 type="text"
+                name="subject"
                 placeholder="Subject"
+                required
                 className="bg-[#111111] border border-white/[0.06] rounded-xl px-4 py-3 text-[16px] text-[#f1f1f1] placeholder-[#555] focus:outline-none focus:border-[#e63946]/50 transition-colors"
               />
               <textarea
                 rows={6}
+                name="message"
                 placeholder="Your Message..."
+                required
                 className="bg-[#111111] border border-white/[0.06] rounded-xl px-4 py-3 text-[16px] text-[#f1f1f1] placeholder-[#555] focus:outline-none focus:border-[#e63946]/50 transition-colors resize-none"
               />
               <button
                 type="submit"
-                className="inline-flex items-center justify-center gap-2 text-[15px] font-semibold text-white bg-[#e63946] hover:bg-[#c1121f] py-3 rounded-xl transition-all duration-200 hover:-translate-y-px cursor-pointer"
+                disabled={status === "sending"}
+                className="inline-flex items-center justify-center gap-2 text-[15px] font-semibold text-white bg-[#e63946] hover:bg-[#c1121f] py-3 rounded-xl transition-all duration-200 hover:-translate-y-px cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed"
               >
                 <Send size={16} />
-                Send Message
+                {status === "sending" ? "Sending..." : "Send Message"}
               </button>
+
+              {status === "success" && (
+                <p className="text-green-400 text-center text-[14px]">
+                  ✅ Message sent successfully!
+                </p>
+              )}
+              {status === "error" && (
+                <p className="text-red-400 text-center text-[14px]">
+                  ❌ Something went wrong. Please try again.
+                </p>
+              )}
             </form>
           </div>
 
