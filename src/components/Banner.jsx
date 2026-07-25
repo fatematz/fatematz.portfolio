@@ -5,50 +5,11 @@ import Image from "next/image";
 import Link from "next/link";
 import img from "@/assets/img8.png";
 import { Download } from "lucide-react";
+import Typewriter from "./Typewriter";
 
-const TYPING_TEXTS = [
-  "MERN Stack Developer",
-  "Frontend Developer",
-  
-];
-
-const useTypewriter = (texts, speed = 80, pause = 1500) => {
-  const [displayed, setDisplayed] = useState("");
-  const [textIndex, setTextIndex] = useState(0);
-  const [charIndex, setCharIndex] = useState(0);
-  const [deleting, setDeleting] = useState(false);
-
-  useEffect(() => {
-    const current = texts[textIndex];
-
-    const timeout = setTimeout(() => {
-      if (!deleting) {
-        setDisplayed(current.slice(0, charIndex + 1));
-        if (charIndex + 1 === current.length) {
-          setTimeout(() => setDeleting(true), pause);
-        } else {
-          setCharIndex((c) => c + 1);
-        }
-      } else {
-        setDisplayed(current.slice(0, charIndex - 1));
-        if (charIndex - 1 === 0) {
-          setDeleting(false);
-          setTextIndex((i) => (i + 1) % texts.length);
-          setCharIndex(0);
-        } else {
-          setCharIndex((c) => c - 1);
-        }
-      }
-    }, deleting ? speed / 2 : speed);
-
-    return () => clearTimeout(timeout);
-  }, [charIndex, deleting, textIndex, texts, speed, pause]);
-
-  return displayed;
-};
+const TYPING_TEXTS = ["MERN Stack Developer", "Frontend Developer"];
 
 const Banner = () => {
-  const typedText = useTypewriter(TYPING_TEXTS);
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
@@ -59,9 +20,9 @@ const Banner = () => {
   return (
     <section
       id="home"
-      className="min-h-[100vh] flex items-center px-6 md:px-16 py-5 md:py-20 bg-[#0d0d0d] overflow-hidden"
+      className="relative min-h-[100vh] flex items-center px-6 md:px-16 py-5 md:py-20 overflow-hidden"
     >
-      <div className="w-full max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-between gap-9">
+      <div className="relative z-10 w-full max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-between gap-9">
 
         {/* Left — slides in from left */}
         <div
@@ -83,12 +44,9 @@ const Banner = () => {
           </h1>
 
           {/* Typewriter */}
-          <div className="flex items-center justify-center md:justify-start gap-2 font-mono text-[15px] md:text-[17px] text-[#a0a0a0] mb-5 min-h-[28px]">
+          <div className="flex items-center justify-center md:justify-start gap-2 font-mono text-[15px] md:text-[17px] text-[#a0a0a0] mb-5">
             <span className="w-2 h-2 rounded-full bg-[#e63946] flex-shrink-0" />
-            <span>
-              {typedText}
-              <span className="animate-pulse text-[#e63946]">|</span>
-            </span>
+            <Typewriter words={TYPING_TEXTS} cursorClassName="text-[#e63946]" />
           </div>
 
           <div className="w-12 h-0.5 bg-[#e63946] mb-7 mx-auto md:mx-0" />
@@ -100,7 +58,7 @@ const Banner = () => {
 
           <div className="flex items-center justify-center md:justify-start gap-4 flex-wrap">
             <a
-              href="/Fatema_Tuj_Zohura_Resume.pdf"
+              href="/Fatema_Tuj_Zohura_Resume_MERN-Stack-Developer.pdf"
               download
               className="text-[13px] flex items-center gap-2 font-semibold text-white bg-[#e63946] hover:bg-[#c1121f] px-7 py-3 rounded-full transition-all duration-200"
             >

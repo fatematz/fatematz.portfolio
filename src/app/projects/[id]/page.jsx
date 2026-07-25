@@ -3,7 +3,7 @@
 import { useParams, useRouter } from "next/navigation";
 import Image from "next/image";
 import { ExternalLink, ArrowLeft } from "lucide-react";
-import { projects } from "@/components/Projects";
+import { projects } from "@/data/projects";
 
 const GithubIcon = () => (
   <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24">
@@ -42,12 +42,12 @@ export default function ProjectDetailPage() {
           <div className="flex items-center gap-2 text-[13px] font-mono text-[#505050]">
             <button onClick={() => router.push("/")} className="hover:text-[#e63946] transition-colors">Home</button>
             <span>/</span>
-            <button onClick={() => router.push("/#projects")} className="hover:text-[#e63946] transition-colors">Projects</button>
+            <button onClick={() => router.push("/projects")} className="hover:text-[#e63946] transition-colors">Projects</button>
             <span>/</span>
             <span className="text-[#a0a0a0]">{project.title}</span>
           </div>
           <button
-            onClick={() => router.push("/#projects")}
+            onClick={() => router.back()}
             className="flex items-center gap-2 text-[13px] font-medium text-[#707070] hover:text-white border border-white/[0.08] hover:border-white/20 px-4 py-2 rounded-full transition-all"
           >
             <ArrowLeft size={15} />
@@ -59,7 +59,14 @@ export default function ProjectDetailPage() {
       {/* ── Hero Image ── */}
       <div className="max-w-5xl mx-auto px-5 md:px-10 pt-8">
         <div className="relative w-full h-[240px] sm:h-[340px] md:h-[460px] rounded-2xl overflow-hidden border border-white/[0.06]">
-          <Image src={project.image} alt={project.title} fill className="object-cover object-top" priority />
+          <Image
+            src={project.image}
+            alt={project.title}
+            fill
+            style={{ objectPosition: project.heroImagePosition || project.imagePosition || "center" }}
+            className="object-cover"
+            priority
+          />
           {project.featured && (
             <span className="absolute top-4 right-4 text-[13px] font-mono text-[#e63946] bg-[#0d0d0d]/80 border border-[#e63946]/30 px-3 py-1 rounded-full backdrop-blur-sm">
               Featured
@@ -147,8 +154,19 @@ export default function ProjectDetailPage() {
                 className="flex items-center justify-center gap-2 text-[15px] font-medium text-[#a0a0a0] hover:text-white border border-white/[0.08] hover:border-white/20 px-5 py-3 rounded-full transition-all duration-200"
               >
                 <GithubIcon />
-                GitHub Repository
+                Client Repository
               </a>
+              {project.githubServer && (
+                <a
+                  href={project.githubServer}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-center gap-2 text-[15px] font-medium text-[#a0a0a0] hover:text-white border border-white/[0.08] hover:border-white/20 px-5 py-3 rounded-full transition-all duration-200"
+                >
+                  <GithubIcon />
+                  Server Repository
+                </a>
+              )}
             </div>
 
           </div>

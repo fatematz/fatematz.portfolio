@@ -29,7 +29,7 @@ const Footer = () => {
   };
 
   return (
-    <footer className="bg-[#0d0d0d] border-t border-white/[0.06]">
+    <footer className="border-t border-white/[0.06]">
       <div className="w-full max-w-6xl mx-auto px-6 md:px-16 py-12">
 
         <div className="flex flex-col md:flex-row items-center justify-between gap-8">
@@ -61,7 +61,7 @@ const Footer = () => {
           {/* Right — CV + Socials */}
           <div className="flex items-center gap-3">
             <a
-              href="/Fatema_Tuj_Zohura_Resume.pdf"
+              href="/Fatema_Tuj_Zohura_Resume_MERN-Stack-Developer.pdf"
               target="_blank"
               rel="noopener noreferrer"
               download

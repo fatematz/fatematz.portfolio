@@ -69,7 +69,7 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="pt-10 pb-20 bg-[#0d0d0d]">
+    <section id="contact" className="pt-10 pb-20 scroll-mt-24">
       <div className="w-full max-w-6xl mx-auto px-6 md:px-16">
 
         {/* Title */}

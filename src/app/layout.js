@@ -37,7 +37,7 @@ export default function RootLayout({ children }) {
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} ${poppins.variable} h-full antialiased dark`}
     >
-      <body className="min-h-full flex flex-col bg-[#0A0F1E]">
+      <body className="min-h-full flex flex-col bg-[#0d0d0d]">
         {/* <CursorTrail /> 
         <Navbar />
         <Banner />

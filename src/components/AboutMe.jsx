@@ -11,7 +11,7 @@ const checklist = [
 
 const AboutMe = () => {
   return (
-    <section id="about" className="pb-20 md:pb-30 pt-5  md:pt-10 bg-[#0d0d0d]">
+    <section id="about" className="pb-20 md:pb-30 pt-5 md:pt-10 scroll-mt-24">
       <div className="w-full max-w-6xl mx-auto px-6 md:px-16">
         <div className="text-center mb-12">
           <h2 className="text-4xl font-bold text-[#f1f1f1] mb-3">

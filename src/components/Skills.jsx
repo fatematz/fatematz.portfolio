@@ -4,7 +4,15 @@ import { useState } from "react";
 
 const skills = {
   Frontend: [
-      {
+    {
+      name: "React.js",
+      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
+    },
+    {
+      name: "Next.js",
+      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg",
+    },
+    {
       name: "HTML5",
       icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg",
     },
@@ -16,21 +24,10 @@ const skills = {
       name: "JavaScript",
       icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg",
     },
-        {
+    {
       name: "Tailwind CSS",
       icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg",
     },
-     {
-      name: "React.js",
-      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
-    },
-    {
-      name: "Next.js",
-      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg",
-    },
-   
-
-  
     { name: "HeroUI", icon: null, customIcon: "HeroUI" },
     {
       name: "daisyUI",
@@ -41,6 +38,10 @@ const skills = {
     {
       name: "Node.js",
       icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg",
+    },
+    {
+      name: "Express.js",
+      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg",
     },
     {
       name: "MongoDB",
@@ -65,6 +66,14 @@ const skills = {
     {
       name: "VS Code",
       icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg",
+    },
+    {
+      name: "Vercel",
+      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vercel/vercel-original.svg",
+    },
+    {
+      name: "Netlify",
+      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/netlify/netlify-original.svg",
     },
     {
       name: "Figma",
@@ -99,7 +108,7 @@ const TechStack = () => {
   const [active, setActive] = useState("Frontend");
 
   return (
-    <section id="techstack" className="pb-10 md:pb-20 bg-[#0d0d0d]">
+    <section id="techstack" className="pb-10 md:pb-20 scroll-mt-24">
       <div className="w-full max-w-6xl mx-auto px-6 md:px-16">
         <div className="text-center mb-12">
         
