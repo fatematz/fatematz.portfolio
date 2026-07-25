@@ -12,7 +12,7 @@ export const projects = [
     id: "ai-interview",
     title: "AI Interview",
     description:
-      "An AI-powered mock interview platform where an adaptive AI interviewer asks real-time follow-up questions based on your answers and delivers a scored feedback report.",
+      "An AI-powered interview platform where an adaptive AI interviewer asks real-time follow-up questions based on your answers and delivers a scored feedback report.",
     image: aiInterview,
     imagePosition: "center 72%",
     live: "https://ai-interview-1-theta.vercel.app",
