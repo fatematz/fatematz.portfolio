@@ -32,7 +32,7 @@ export const projects = [
     challenges:
       "Handling unpredictable LLM output was the biggest challenge — the AI returns free-form text, but the app needed structured data (a 0–10 score plus written feedback), which required careful prompt engineering and a strict parsing layer so malformed responses wouldn't crash the app. Authentication across two separate services was another hurdle: login happens via Better Auth on the frontend, but the API runs on a separate Express server, so the server had to verify JWTs against the frontend's JWKS endpoint using jose — getting the CLIENT_URL/AUTH_URL wrong in production broke both CORS and auth. Resume-based question generation also took iteration: PDFs are uploaded via Multer, parsed to text with pdf-parse, and turned into 8 relevant, personalized interview questions from that often-noisy extracted text. The 3D hero built with Three.js/React Three Fiber added meaningful bundle size, so first-load and mobile performance needed dedicated optimization.",
     futurePlans:
-      "Add interview recording playback with timestamped feedback, support multiple interview modes (technical, behavioral, HR), let candidates track progress across sessions with trend charts, and extend the resume parser to support DOCX and multiple languages.",
+      "Add interview recording playback with timestamped feedback, support multiple interview modes (technical, behavioral, HR), let candidates track progress across sessions with trend charts, extend the resume parser to support DOCX and multiple languages, and grow this into a more full-fledged AI mock interview system with live voice-based Q&A and deeper, more personalized feedback.",
   },
   {
     id: "desi-haat",
